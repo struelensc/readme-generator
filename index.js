@@ -60,8 +60,6 @@ const questions = [
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
   const readmeText = generateMarkdown(data);
-
-  console.log(readmeText);
 }
 
 // TODO: Create a function to initialize app
