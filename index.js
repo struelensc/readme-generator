@@ -1,6 +1,9 @@
 const fs = require("fs");
 const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown");
+const {
+  generateMarkdown,
+  renderLicenseText,
+} = require("./utils/generateMarkdown");
 
 // Question prompts
 const questions = [
@@ -37,6 +40,11 @@ const questions = [
   },
   {
     type: "input",
+    name: "fullName",
+    message: "Full Name(s) for License:",
+  },
+  {
+    type: "input",
     name: "contribution",
     message: "Contribution guidelines:",
   },
@@ -58,14 +66,23 @@ const questions = [
 ];
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(data) {
+  const fileName = data.title.replaceAll(" ", "-");
   const readmeText = generateMarkdown(data);
+  const licenseText = renderLicenseText(data.license, data.fullName);
+
+  fs.writeFile(`${fileName}-README.md`, readmeText, (err) =>
+    err ? console.log(err) : console.log("Successfully created README!")
+  );
+  fs.writeFile(`${fileName}-LICENSE.md`, licenseText, (err) =>
+    err ? console.log(err) : console.log("Successfully created LICENSE!")
+  );
 }
 
 // TODO: Create a function to initialize app
 function init() {
   inquirer.prompt(questions).then((data) => {
-    writeToFile(data.title, data);
+    writeToFile(data);
   });
 }
 
