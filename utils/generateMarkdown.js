@@ -139,11 +139,11 @@ function generateMarkdown(data) {
         if (data.github === "" && data.email === "") {
           return;
         } else if (data.github != "" && data.email === "") {
-          return `You can find me on GitHub under ${data.github}.`;
+          return `Feel free to reach me on ![GitHub](${data.github}).`;
         } else if (data.github === "" && data.email != "") {
           return `You can reach me via email at ${data.email}.`;
         } else {
-          return `Feel free to reach me via ${data.github} or email at ${data.email}.`;
+          return `Feel free to reach me on ![GitHub](${data.github}) or email me at ${data.email}.`;
         }
       },
     },
