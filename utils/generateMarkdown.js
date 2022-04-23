@@ -16,41 +16,76 @@ function generateMarkdown(data) {
 
   const readmeSections = [
     {
-      header: ``,
-      content: `# ${data.title}`,
+      info: data.title,
+      textContent: () => {
+        return `# ${data.title}`;
+      },
     },
     {
       header: "## Description",
-      content: data.description,
+      info: data.description,
+      textContent: () => {
+        return data.description;
+      },
     },
     {
       header: "## Installation Instructions",
-      content: data.install,
+      info: data.install,
+      textContent: () => {
+        return data.install;
+      },
     },
     {
       header: "## Usage Information",
-      content: data.usage,
+      info: data.usage,
+      textContent: () => {
+        return data.usage;
+      },
     },
     {
       header: "## Contribution Guidelines",
-      content: data.contribution,
+      info: data.contribution,
+      textContent: () => {
+        return data.contribution;
+      },
     },
     {
       header: "## Test Instructions",
-      content: data.test,
+      info: data.test,
+      textContent: () => {
+        return data.test;
+      },
     },
     {
       header: "## License",
-      content: data.license,
+      info: data.license,
+      textContent: () => {
+        return data.license;
+      },
+    },
+    {
+      header: "## Questions",
+      info: { github: data.github, email: data.email },
+      textContent: () => {
+        if (data.github === "" && data.email === "") {
+          return;
+        } else if (data.github != "" && data.email === "") {
+          return `You can find me on GitHub under ${data.github}.`;
+        } else if (data.github === "" && data.email != "") {
+          return `You can reach me via email at ${data.email}.`;
+        } else {
+          return `You can find me on GitHub under ${data.github} or email at ${data.email}.`;
+        }
+      },
     },
   ];
 
   const text = [];
 
   for (let i = 0; i < readmeSections.length; i++) {
-    if (readmeSections[i].content != "") {
+    if (readmeSections[i].info != "") {
       text.push(readmeSections[i].header);
-      text.push(readmeSections[i].content);
+      text.push(readmeSections[i].textContent());
     }
   }
 
