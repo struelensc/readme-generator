@@ -66,7 +66,7 @@ const questions = [
   },
 ];
 
-// TODO: Create a function to write README file
+// Writes README and LICENSE files
 function writeToFile(data) {
   const fileName = data.title.replaceAll(" ", "-");
   const readmeText = generateMarkdown(data);
@@ -83,7 +83,7 @@ function writeToFile(data) {
   }
 }
 
-// TODO: Create a function to initialize app
+// Initializes app
 function init() {
   inquirer.prompt(questions).then((data) => {
     writeToFile(data);

@@ -1,5 +1,4 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
+// Returns a badge for chosen license or returns null if no license was chosen
 function renderLicenseBadge(license) {
   if (license === "MIT License") {
     return `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`;
@@ -14,9 +13,7 @@ function renderLicenseBadge(license) {
   }
 }
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-
+// Returns README text for LICENSE information or returns null if no license was chosen
 function renderLicenseLink(data, license) {
   let fileName = data.title.replaceAll(" ", "-");
 
@@ -27,8 +24,7 @@ function renderLicenseLink(data, license) {
   }
 }
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
+// Returns text for LICENSE file or returns null if no license was chosen
 function renderLicenseText(license, names) {
   if (license === "MIT License") {
     return `Copyright ${new Date().getFullYear()} ${names}
@@ -80,7 +76,7 @@ function renderLicenseText(license, names) {
   }
 }
 
-// TODO: Create a function to generate markdown for README
+// Generates markdown text for README sections according to what the user fills out
 function generateMarkdown(data) {
   const readmeSections = [
     {
@@ -156,6 +152,7 @@ function generateMarkdown(data) {
 
   const text = [];
 
+  // Loops through objects to generate README based on user submissions
   for (let i = 0; i < readmeSections.length; i++) {
     if (
       readmeSections[i].info != "" &&
@@ -168,8 +165,7 @@ function generateMarkdown(data) {
     }
   }
 
-  console.log(text);
-
+  // Returns final README text
   return text.join("\n\n");
 }
 
