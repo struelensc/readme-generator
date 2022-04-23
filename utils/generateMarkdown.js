@@ -20,7 +20,7 @@ function renderLicenseBadge(license) {
 function renderLicenseLink(data, license) {
   let fileName = data.title.replaceAll(" ", "-");
 
-  if (license != "") {
+  if (license != "None") {
     return `See the [LICENSE](${fileName}-LICENSE.md) file for license rights and limitations (${license}).`;
   } else {
     return null;
@@ -76,7 +76,7 @@ function renderLicenseText(license, names) {
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see <http://www.gnu.org/licenses/>.`;
   } else {
-    return null;
+    return;
   }
 }
 
@@ -84,10 +84,12 @@ function renderLicenseText(license, names) {
 function generateMarkdown(data) {
   const readmeSections = [
     {
+      header: null,
       info: data.license,
       textContent: () => renderLicenseBadge(data.license),
     },
     {
+      header: null,
       info: data.title,
       textContent: () => {
         return `# ${data.title}`;
@@ -137,7 +139,7 @@ function generateMarkdown(data) {
     },
     {
       header: "## Questions",
-      info: { github: data.github, email: data.email },
+      info: data.github || data.email,
       textContent: () => {
         if (data.github === "" && data.email === "") {
           return;
@@ -155,11 +157,18 @@ function generateMarkdown(data) {
   const text = [];
 
   for (let i = 0; i < readmeSections.length; i++) {
-    if (readmeSections[i].info != "") {
-      text.push(readmeSections[i].header);
+    if (
+      readmeSections[i].info != "" &&
+      readmeSections[i].textContent() != null
+    ) {
+      if (readmeSections[i].header != null) {
+        text.push(readmeSections[i].header);
+      }
       text.push(readmeSections[i].textContent());
     }
   }
+
+  console.log(text);
 
   return text.join("\n\n");
 }

@@ -32,6 +32,7 @@ const questions = [
     name: "license",
     message: "License choice:",
     choices: [
+      "None",
       "MIT License",
       "GNU General Public License (GPL) 2.0",
       "Apache License 2.0",
@@ -74,9 +75,12 @@ function writeToFile(data) {
   fs.writeFile(`${fileName}-README.md`, readmeText, (err) =>
     err ? console.log(err) : console.log("Successfully created README!")
   );
-  fs.writeFile(`${fileName}-LICENSE.md`, licenseText, (err) =>
-    err ? console.log(err) : console.log("Successfully created LICENSE!")
-  );
+
+  if (licenseText != null) {
+    fs.writeFile(`${fileName}-LICENSE.md`, licenseText, (err) =>
+      err ? console.log(err) : console.log("Successfully created LICENSE!")
+    );
+  }
 }
 
 // TODO: Create a function to initialize app
