@@ -16,9 +16,12 @@ function renderLicenseBadge(license) {
 
 // TODO: Create a function that returns the license link
 // If there is no license, return an empty string
-function renderLicenseLink(license) {
+
+function renderLicenseLink(data, license) {
+  let fileName = data.title.replaceAll(" ", "-");
+
   if (license != "") {
-    return `See the [LICENSE](LICENSE.md) file for license rights and limitations (${license}).`;
+    return `See the [LICENSE](${fileName}-LICENSE.md) file for license rights and limitations (${license}).`;
   } else {
     return null;
   }
@@ -129,7 +132,7 @@ function generateMarkdown(data) {
       header: "## License",
       info: data.license,
       textContent: () => {
-        return renderLicenseLink(data.license);
+        return renderLicenseLink(data, data.license);
       },
     },
     {
