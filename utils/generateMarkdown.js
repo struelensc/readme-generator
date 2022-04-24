@@ -76,15 +76,31 @@ function renderLicenseText(license, names) {
   }
 }
 
+// Renders table of contents
+function renderTOC(data) {
+  let toc = [];
+
+  for (let i = 4; i < data.length; i++) {
+    if (data[i].info && data[i].info != "None") {
+      console.log(`"${data[i].info}"`);
+      toc.push(`- [${data[i].name}](#${data[i].name.toLowerCase()})`);
+    }
+  }
+
+  return toc.join("\n");
+}
+
 // Generates markdown text for README sections according to what the user fills out
 function generateMarkdown(data) {
   const readmeSections = [
     {
+      name: "Badge",
       header: null,
       info: data.license,
       textContent: () => renderLicenseBadge(data.license),
     },
     {
+      name: "Title",
       header: null,
       info: data.title,
       textContent: () => {
@@ -92,6 +108,7 @@ function generateMarkdown(data) {
       },
     },
     {
+      name: "Description",
       header: "## Description",
       info: data.description,
       textContent: () => {
@@ -99,34 +116,47 @@ function generateMarkdown(data) {
       },
     },
     {
-      header: "## Installation Instructions",
+      name: "Table of Contents",
+      header: "## Table of Contents",
+      info: data,
+      textContent: () => {
+        return renderTOC(readmeSections);
+      },
+    },
+    {
+      name: "Installation",
+      header: "## Installation",
       info: data.install,
       textContent: () => {
         return data.install;
       },
     },
     {
-      header: "## Usage Information",
+      name: "Usage",
+      header: "## Usage",
       info: data.usage,
       textContent: () => {
         return data.usage;
       },
     },
     {
-      header: "## Contribution Guidelines",
+      name: "Contribution",
+      header: "## Contribution",
       info: data.contribution,
       textContent: () => {
         return data.contribution;
       },
     },
     {
-      header: "## Test Instructions",
+      name: "Tests",
+      header: "## Tests",
       info: data.test,
       textContent: () => {
         return data.test;
       },
     },
     {
+      name: "License",
       header: "## License",
       info: data.license,
       textContent: () => {
@@ -134,6 +164,7 @@ function generateMarkdown(data) {
       },
     },
     {
+      name: "Questions",
       header: "## Questions",
       info: data.github || data.email,
       textContent: () => {
