@@ -59,7 +59,7 @@ Sample README: [README File](./assets/Sample-README.md)
 
 ![sample readme](./assets/readme-generator-sample-readme.png)
 
-Sample LICENSE: [LICENSE FILE](./assets/Sample-LICENSE.md)
+Sample LICENSE: [LICENSE File](./assets/Sample-LICENSE.md)
 
 ![sample license](./assets/readme-generator-sameple-license.png)
 
