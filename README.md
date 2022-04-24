@@ -55,11 +55,11 @@ Console Activity:
 
 ![console](./assets/readme-generator-console.png)
 
-Sample README: [README File](./assets/Sample-README.md)
+Sample README: [Sample README File](./assets/Sample-README.md)
 
 ![sample readme](./assets/readme-generator-sample-readme.png)
 
-Sample LICENSE: [LICENSE File](./assets/Sample-LICENSE.md)
+Sample LICENSE: [Sample LICENSE File](./assets/Sample-LICENSE.md)
 
 ![sample license](./assets/readme-generator-sameple-license.png)
 
