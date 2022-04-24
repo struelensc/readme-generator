@@ -72,13 +72,16 @@ function writeToFile(data) {
   const readmeText = generateMarkdown(data);
   const licenseText = renderLicenseText(data.license, data.fullName);
 
-  fs.writeFile(`${fileName}-README.md`, readmeText, (err) =>
+  fs.writeFile(`./generated-files/${fileName}-README.md`, readmeText, (err) =>
     err ? console.log(err) : console.log("Successfully created README!")
   );
 
   if (licenseText != null) {
-    fs.writeFile(`${fileName}-LICENSE.md`, licenseText, (err) =>
-      err ? console.log(err) : console.log("Successfully created LICENSE!")
+    fs.writeFile(
+      `./generated-files/${fileName}-LICENSE.md`,
+      licenseText,
+      (err) =>
+        err ? console.log(err) : console.log("Successfully created LICENSE!")
     );
   }
 }
