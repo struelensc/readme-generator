@@ -21,11 +21,16 @@ The purpose of this project was to practice writing command-line applications in
 
 ## Installation
 
+You will need to have Node.js already installed on your computer.
+
 1. Navigate to the "<> Code" tab of the project.
 1. Click on the "Code" button on the right. A dropdown should appear.
 1. Under "Clone", "HTTPS" should be selected.
 1. Select "Download ZIP"
 1. Extract the folder to where you'd like to save the readme-generator.
+1. Using your console, navigate to the folder.
+1. Once inside the folder in your console run the below command to install required node modules.
+1. The readme-generator is ready for use.
 
 ## Usage
 
