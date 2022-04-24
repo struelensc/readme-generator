@@ -1,3 +1,6 @@
+![language](https://img.shields.io/github/languages/top/struelensc/readme-generator?style=flat-square)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=flat-square&logo=appveyor)](https://opensource.org/licenses/MIT)
+
 # readme-generator
 
 ## Description
