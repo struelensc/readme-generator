@@ -52,7 +52,6 @@ function renderTOC(data) {
 
   for (let i = 4; i < data.length; i++) {
     if (data[i].info && data[i].info != "None") {
-      console.log(`"${data[i].info}"`);
       toc.push(`- [${data[i].name}](#${data[i].name.toLowerCase()})`);
     }
   }
