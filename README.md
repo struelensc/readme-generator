@@ -55,11 +55,11 @@ Console Activity:
 
 ![console](./assets/readme-generator-console.png)
 
-Sample README: Actual file can be found in the assets folder.
+Sample README: [README File](./assets/Sample-README.md)
 
 ![sample readme](./assets/readme-generator-sample-readme.png)
 
-Sample LICENSE: Actual file can be found in the assets folder.
+Sample LICENSE: [LICENSE FILE](./assets/Sample-LICENSE.md)
 
 ![sample license](./assets/readme-generator-sameple-license.png)
 
